@@ -1,0 +1,100 @@
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Harmattan:wght@400;700&display=swap'); */
+@import '../../vendor/filament/forms/dist/module.esm.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-nav {
+        @apply border-2 mx-1 p-1 rounded-full;
+    }
+
+    .btn-nav-alt {
+        @apply inline-block border-0 mx-1 p-1 rounded-md;
+    }
+
+    .btn-action {
+        @apply w-32 p-2 font-bold text-center rounded-md border-2;
+    }
+
+    .btn-action-w {
+        @apply p-2 font-bold text-center rounded-md border-2;
+    }
+
+    /* create */
+    .btn-fill-create {
+        @apply bg-emerald-500 hover:bg-emerald-600 border-emerald-500 hover:border-emerald-600 text-white;
+    }
+    .btn-border-create {
+        @apply bg-white border-emerald-500 hover:border-emerald-600 text-emerald-500 hover:text-emerald-600;
+    }
+    .btn-fill-create-alt {
+        @apply bg-teal-500 hover:bg-teal-600 border-teal-500 hover:border-teal-600 text-white;
+    }
+    .btn-border-create-alt {
+        @apply bg-white border-teal-500 hover:border-teal-600 text-teal-500 hover:text-teal-600;
+    }
+
+    /* read */
+    .btn-fill-read {
+        @apply bg-sky-500 hover:bg-sky-600 border-sky-500 hover:border-sky-600 text-white;
+    }
+    .btn-border-read {
+        @apply bg-white border-sky-500 hover:border-sky-600 text-sky-500 hover:text-sky-600;
+    }
+    .btn-fill-read-alt {
+        @apply bg-cyan-500 hover:bg-cyan-600 border-cyan-500 hover:border-cyan-600 text-white;
+    }
+    .btn-border-read-alt {
+        @apply bg-white border-cyan-500 hover:border-cyan-600 text-cyan-500 hover:text-cyan-600;
+    }
+
+    /* update */
+    .btn-fill-update {
+        @apply bg-amber-500 hover:bg-amber-600 border-amber-500 hover:border-amber-600 text-white;
+    }
+    .btn-border-update {
+        @apply bg-white border-amber-500 hover:border-amber-600 text-amber-500 hover:text-amber-600;
+    }
+    .btn-fill-update-alt {
+        @apply bg-yellow-500 hover:bg-yellow-600 border-yellow-500 hover:border-yellow-600 text-white;
+    }
+    .btn-border-update-alt {
+        @apply bg-white border-yellow-500 hover:border-yellow-600 text-yellow-500 hover:text-yellow-600;
+    }
+
+    button {
+        @apply outline-none;
+    }
+
+    /* ======================================= */
+    /* ============= SCROLLBAR =============== */
+    /* ======================================= */
+    /* width */
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-blue-200;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-blue-300;
+    }
+
+    input[required],
+    select[required] {
+        @apply bg-sky-50;
+    }
+}
+
+[x-cloak] { display: none !important; }

@@ -1,0 +1,77 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use {{ namespacedModel }};
+use {{ namespacedUserModel }};
+
+class {{ class }}
+{
+    use HandlesAuthorization;
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function viewAny({{ user }} $user)
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function view({{ user }} $user, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function create({{ user }} $user)
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function update({{ user }} $user, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function delete({{ user }} $user, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function restore({{ user }} $user, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     * @author medilies
+     */
+    public function forceDelete({{ user }} $user, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+}

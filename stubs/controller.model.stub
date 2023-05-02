@@ -1,0 +1,73 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+
+class {{ class }} extends Controller
+{
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function store({{ storeRequest }} $request)
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function edit({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     * @author medilies
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+}

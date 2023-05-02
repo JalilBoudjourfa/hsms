@@ -1,0 +1,80 @@
+# PREFIX ./vendor/bin/sail
+version: '3'
+services:
+
+    laravel.test:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.1
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.1/app
+        restart: always
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - 51080:80
+        environment:
+            TZ: Africa/Algiers
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sms
+        depends_on:
+            - mysql
+
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        restart: always
+        environment:
+            TZ: Africa/Algiers
+            MYSQL_ROOT_PASSWORD: 'root'
+            MYSQL_DATABASE: 'sms'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'root'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - 'app-db:/var/lib/mysql'
+        networks:
+            - sms
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-proot" ]
+            retries: 3
+            timeout: 5s
+
+    phpmyadmin:
+        image: phpmyadmin:5.0-apache
+        restart: always
+        depends_on:
+            - mysql
+        ports:
+            - 51180:80
+        networks:
+            - sms
+        environment:
+            TZ: Africa/Algiers
+            UPLOAD_LIMIT: 300M
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            # PMA_USER: 'root'
+            # PMA_PASSWORD: 'root'
+
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        restart: always
+        ports:
+            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+            - 51280:8025
+        networks:
+            - sms
+
+networks:
+    sms:
+        driver: bridge
+volumes:
+    app-db:
+        driver: local

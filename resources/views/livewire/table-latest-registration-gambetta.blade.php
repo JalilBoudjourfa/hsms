@@ -1,0 +1,6 @@
+<div class="mt-10">
+    <span class="text-lg p-1 font-semibold flex text-gray-700"> List des éléves inscrit Gambetta :
+        <x-new-registrations-gambetta-counter />
+    </span>
+    {{ $this->table }}
+</div>

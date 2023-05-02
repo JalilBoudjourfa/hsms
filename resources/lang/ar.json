@@ -1,0 +1,13 @@
+{
+    "First name": "الاسم",
+    "Last name": "اللقب",
+    "Email": "البريد الالكتروني",
+    "Password": "كلمة السر",
+    "Confirm Password": "تأكيد كلمة السر",
+    "Already registered?": "لديك حساب؟",
+    "Register": "التسجيل",
+    "Remember me": "تذكرني",
+    "Forgot your password?": "نسيت كلمة السر؟",
+    "Log in": "الدخول",
+    "pending": "pending"
+}

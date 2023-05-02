@@ -1,0 +1,87 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Classroom;
+use App\Models\ClassType;
+use App\Models\EstablishmentYear;
+use App\Models\Room;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class   ClassroomsAndRoomsSeeder extends Seeder
+{
+    use WithoutModelEvents;
+
+    private array $exceptClassTypes =
+    [
+        // 'pre',
+        // '1ap',
+        // '2ap',
+        // '3ap',
+        // '4ap',
+        // '5ap',
+        // '1am',
+        // '2am',
+        // '3am',
+        // '4am',
+        // '1as-st',
+        // '1as-l',
+        // '2as-s',
+        // '2as-ge',
+        // '2as-m',
+        // '2as-tm',
+        // '2as-le',
+        // '2as-lp',
+        // '3as-s',
+        // '3as-ge',
+        // '3as-m',
+        // '3as-tm',
+        // '3as-le',
+        // '3as-lp',
+    ];
+
+    public function run(): void
+    {
+        // TODO: foreach
+        $establishment_years ??= EstablishmentYear::whereIn(
+            'year_id',
+            fn ($q) => $q->select('id')->from('years')->where('state', 'current')
+        )->get();
+
+        if (empty($establishment_years)) {
+            throw new \Exception('No establishment-year to seed classrooms', 1);
+        }
+
+        $class_types = ClassType::whereNotIn('alias', $this->exceptClassTypes)->get();
+
+        if (empty($class_types)) {
+            throw new \Exception('No establishment-year to seed classrooms', 1);
+        }
+
+        $classrooms = collect([]);
+
+        foreach ($establishment_years as $establishment_year) {
+            foreach ($class_types as $class_type) {
+                // $classroom = Classroom::factory()
+                // ->isActive()
+                // ->for($class_type)
+                // ->for($establishment_year)
+                // ->create();
+                Classroom::create([
+                    'class_type_id' => $class_type->id,
+                    'establishment_year_id' => $establishment_year->id,
+                    'active' => false,
+                ]);
+
+                // Room::factory()
+                //     ->for($establishment_year)
+                //     ->for($classroom)
+                //     ->count(rand(1, 2))
+                //     ->create();
+
+                // $classrooms->push($classroom);
+            }
+        }
+    }
+}
